@@ -1,12 +1,16 @@
 package com.springboot.restapi.helper;
 
+import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+
+import javax.xml.bind.DatatypeConverter;
 
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
@@ -41,7 +45,16 @@ public class FileUploadHelper {
 			 /**
 			  * OR Single line alternative
 			  * Files.copy(file.getInputStream(), Paths.get(UPLOAD_DIR+ File.separator +file.getOriginalFilename()), StandardCopyOption.REPLACE_EXISTING);  
-			  */  
+			  */
+			 
+			 /**
+			  * OR for base64string save
+			  * byte data[] = DatatypeConverter.parseBase64Binary(fileBase64);
+				File file = new File(Upload_dir+File.separator+"file.jpeg");
+				OutputStream outputStream = new BufferedOutputStream(new FileOutputStream(file));
+				outputStream.write(data);  
+			  */
+			 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

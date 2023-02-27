@@ -34,8 +34,7 @@ public class UploadFileController {
 			
 			boolean result = fileUploadHelper.uploadFile(file);
 			if(result) {
-				ResponseEntity.ok(ServletUriComponentsBuilder.fromCurrentContextPath().path("/image/").path(file.getOriginalFilename()).toUriString());
-				
+				return ResponseEntity.ok(ServletUriComponentsBuilder.fromCurrentContextPath().path("/image/").path(file.getOriginalFilename()).toUriString());	
 			}
 			
 		} catch (Exception e) {
